@@ -16,10 +16,8 @@ func main() {
 	flag.Parse()
 	fmt.Println(*regionPtr)
 	fmt.Println(*bucketPtr)
-	fmt.Println(*projectPtr)
-	fmt.Println(*episodePtr)
-	fmt.Println(*scenePtr)
-	fmt.Println(*cutPtr)
 	fmt.Println(*filePtr)
+	key := fmt.Sprintf("%s/%d/%d_%d%s", *projectPtr, *episodePtr, *scenePtr, *cutPtr, ".blend")
 	fmt.Println(flag.Args())
+	fmt.Println(key)
 }
