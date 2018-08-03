@@ -3,7 +3,7 @@ Lazypic S3 스토리지에 파일(블랜더파일, 이미지파일)을 업로드
 애니메이션 작업 파일을 Upload, Publish 를 위해 사용합니다.
 
 #### 사용법
-- 홈디렉토리 render.blend 파일을 pilot프로젝트, 에피소드1, 씬1, 컷2 파일로 S3 클라우드에 올리는 예제.
+- 홈디렉토리 render.blend 파일을 pilot프로젝트, 에피소드1, 씬1, 컷2 파일로 S3 클라우드에 올리는 예제입니다.
 ```bash
 $ upload -project pilot -ep 1 -s 1 -c 2 -file ~/render.blend
 ```
