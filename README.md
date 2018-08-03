@@ -9,6 +9,12 @@ Lazypic S3 스토리지에 파일(블랜더파일, 이미지파일)을 업로드
 $ upload -project pilot -ep 1 -s 1 -c 2 -file ~/render.blend
 ```
 
+#### 직접 컴파일
+- Go가 깔려있다면 아래처럼 설치할 수 있습니다.
+```
+go get -u github.com/lazypic/upload
+```
+
 
 #### 파일 버전관리
 - AWS S3 기능중 `속성 > 버전관리`를 활성화하면 같은 key로 매번 파일업로드를 하더라도 스토리지 레벨에서 자동 버전관리가 됩니다.
