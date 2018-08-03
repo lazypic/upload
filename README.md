@@ -8,7 +8,12 @@ Lazypic S3 스토리지에 파일(블랜더파일, 이미지파일)을 업로드
 - 홈디렉토리 render.blend 파일을 pilot프로젝트, 에피소드1, 씬1, 컷2 파일로 S3 클라우드에 올리는 예제입니다.
 ```bash
 $ upload -project pilot -ep 1 -s 1 -c 2 -file ~/render.blend
-$ upload -region us-west-2 -bucket {companyname} -project pilot -ep 1 -s 1 -c 2 -file ~/render.blend // 미서부오레건, companyname의 bucket에 데이터르 넣느 예제
+```
+
+- 다른회사에 다른 지역이라면 아래처럼 사용자 인수를 지원합니다.
+- `us-west-2`(미서부오레건), `companyname`의 bucket에 데이터를 넣는 예제는 아래와 같습니다.
+```bash
+$ upload -region us-west-2 -bucket companyname -project pilot -ep 1 -s 1 -c 2 -file ~/render.blend 
 ```
 
 #### 사용자컴파일
