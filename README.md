@@ -10,7 +10,7 @@ $ upload -project pilot -ep 1 -s 1 -c 2 -file ~/render.blend
 ```
 
 #### 사용자컴파일
-- Go가 깔려있다면 터미널을 통해서 아래처럼 설치할 수 있습니다.
+- Go가 설치되어있다면, 터미널을 통해서 아래처럼 설치할 수 있습니다.
 ```bash
 $ go get -u github.com/lazypic/upload
 ```
