@@ -10,6 +10,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 )
 
 func uploadS3(s *session.Session, bucket, key, fileDir string) error {
@@ -49,14 +50,20 @@ func main() {
 	cutPtr := flag.Int("cut", 0, "cut number")
 	filePtr := flag.String("file", "", "project name")
 	flag.Parse()
-	fmt.Println(*regionPtr)
-	fmt.Println(*bucketPtr)
-	fmt.Println(*filePtr)
-	key := fmt.Sprintf("%s/%d/%d_%d%s", *projectPtr, *episodePtr, *scenePtr, *cutPtr, ".blend")
-	fmt.Println(flag.Args())
-	fmt.Println(key)
+	if *projectPtr == "" || *filePtr == "" {
+		fmt.Println("Upload file for AWS S3")
+		fmt.Println("Copyright 2018, Lazypic, All rights reserved.")
+		flag.PrintDefaults()
+		return
+	}
+	path, err := filepath.Abs(*filePtr)
+	if err != nil {
+		log.Fatal(err)
+	}
+	ext := filepath.Ext(path)
+	key := fmt.Sprintf("%s/%d/%d_%d%s", *projectPtr, *episodePtr, *scenePtr, *cutPtr, ext)
 	s := session.New(&aws.Config{Region: aws.String(*regionPtr)})
-	err := uploadS3(s, *bucketPtr, key, *filePtr)
+	err = uploadS3(s, *bucketPtr, key, path)
 	if err != nil {
 		log.Fatal(err)
 	}
