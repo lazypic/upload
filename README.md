@@ -16,6 +16,13 @@ $ upload -project pilot -ep 1 -s 1 -c 2 -file ~/render.blend
 $ upload -region us-west-2 -bucket companyname -project pilot -ep 1 -s 1 -c 2 -file ~/render.blend 
 ```
 
+- 이 프로그램이 작동되기 위해서는 ~/.aws/credentials 파일에 아래코드가 존재해야합니다.
+```
+[default]
+aws_access_key_id = 
+aws_secret_access_key = 
+```
+
 #### 사용자컴파일
 - Go가 설치되어있다면, 터미널을 통해서 아래처럼 설치할 수 있습니다.
 ```bash
