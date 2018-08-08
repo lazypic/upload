@@ -45,12 +45,12 @@ func main() {
 	regionPtr := flag.String("region", "ap-northeast-2", "AWS region name.") // 현재 Lazypic은 서울리전을 사용중이다.
 	bucketPtr := flag.String("bucket", "lazypic", "S3 bucket name.")
 	projectPtr := flag.String("project", "", "project name")
-	episodePtr := flag.Int("ep", 0, "episode number")
-	scenePtr := flag.Int("s", 0, "scene number")
-	cutPtr := flag.Int("c", 0, "cut number")
+	episodePtr := flag.String("ep", "", "episode name")
+	scenePtr := flag.String("s", "", "scene name")
+	cutPtr := flag.String("c", "", "cut name")
 	filePtr := flag.String("file", "", "project name")
 	flag.Parse()
-	if *projectPtr == "" || *filePtr == "" {
+	if *projectPtr == "" || *episodePtr == "" || *scenePtr == "" || *cutPtr == "" || *filePtr == "" {
 		fmt.Println("Upload file for AWS S3")
 		fmt.Println("Copyright 2018, Lazypic, All rights reserved.")
 		flag.PrintDefaults()
@@ -61,7 +61,7 @@ func main() {
 		log.Fatal(err)
 	}
 	ext := filepath.Ext(path)
-	key := fmt.Sprintf("%s/%d/%d/%d%s", *projectPtr, *episodePtr, *scenePtr, *cutPtr, ext)
+	key := fmt.Sprintf("%s/%s/%s/%s%s", *projectPtr, *episodePtr, *scenePtr, *cutPtr, ext)
 	s := session.New(&aws.Config{Region: aws.String(*regionPtr)})
 	err = uploadS3(s, *bucketPtr, key, path)
 	if err != nil {
