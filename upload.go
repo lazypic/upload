@@ -61,7 +61,7 @@ func main() {
 		log.Fatal(err)
 	}
 	ext := filepath.Ext(path)
-	key := fmt.Sprintf("%s/%s/%s/%s%s", *projectPtr, *episodePtr, *scenePtr, *cutPtr, ext)
+	key := *projectPtr + "/" + *episodePtr + "/" + *scenePtr + "/" + *cutPtr + ext
 	s := session.New(&aws.Config{Region: aws.String(*regionPtr)})
 	err = uploadS3(s, *bucketPtr, key, path)
 	if err != nil {
